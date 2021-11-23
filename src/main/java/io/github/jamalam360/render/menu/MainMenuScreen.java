@@ -34,9 +34,13 @@ public class MainMenuScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(joinButton)) {
+            this.setVisible(false);
+            this.dispose();
             new GameClient(JOptionPane.showInputDialog("Enter Host Name"), JOptionPane.showInputDialog("Enter User Name"));
         } else if (e.getSource().equals(hostButton)) {
             try {
+                this.setVisible(false);
+                this.dispose();
                 new GameHost(JOptionPane.showInputDialog("Enter User Name"));
             } catch (InterruptedException ex) {
                 ex.printStackTrace();

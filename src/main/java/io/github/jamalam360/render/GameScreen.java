@@ -27,7 +27,7 @@ public class GameScreen extends JFrame implements ActionListener {
         setResizable(false);
 
         for (int i = 0; i <= 8; i++) {
-            button[i] = new JButton(String.valueOf(i));
+            button[i] = new JButton();
             button[i].setBackground(Color.WHITE);
             button[i].setFont(new Font("Arial", Font.BOLD, 70));
             button[i].setFocusPainted(false);
@@ -43,6 +43,9 @@ public class GameScreen extends JFrame implements ActionListener {
         button[6].setBounds(0, 200, 100, 100);
         button[7].setBounds(100, 200, 100, 100);
         button[8].setBounds(200, 200, 100, 100);
+
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     private void restartGame() {
