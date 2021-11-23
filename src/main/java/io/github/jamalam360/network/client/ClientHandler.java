@@ -18,6 +18,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<String> {
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         if (msg.contains("HANDSHAKE") && serverName == null) {
             serverName = msg.substring(msg.indexOf(" "));
+            gameClient.screen.setOpponent(serverName);
         } else if (msg.contains("STATE")) {
             String arrString = msg.substring(msg.indexOf(" "));
             int index = 0;

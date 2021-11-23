@@ -9,7 +9,7 @@ public class GameHost implements GameManager {
     public static final int CROSS = 1;
     public static final int NOUGHT = 2;
     private final ServerNetwork network;
-    private final GameScreen screen;
+    public final GameScreen screen;
     private final int[] gameState = new int[9];
 
     public GameHost(String username) throws InterruptedException {

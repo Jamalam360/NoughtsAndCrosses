@@ -48,6 +48,10 @@ public class GameScreen extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+    public void setOpponent(String opponent) {
+        setTitle("Noughts and Crosses - " + opponent);
+    }
+
     private void restartGame() {
         for (int i = 0; i <= 8; i++) {
             button[i].setText(String.valueOf(i));

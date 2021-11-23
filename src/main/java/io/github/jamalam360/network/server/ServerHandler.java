@@ -18,6 +18,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         if (msg.contains("HANDSHAKE")) {
             clientName = msg.substring(msg.indexOf(" "));
+            gameHost.screen.setOpponent(clientName);
             ctx.writeAndFlush("HANDSHAKE " + settings.username() + "\n\r");
         } else if (msg.contains("CLICK")) {
             gameHost.onClick(Integer.parseInt(msg.substring(msg.indexOf(" "))), true);

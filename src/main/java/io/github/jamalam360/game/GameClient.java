@@ -6,7 +6,7 @@ import io.github.jamalam360.render.GameScreen;
 
 public class GameClient implements GameManager {
     private final ClientNetwork network;
-    private final GameScreen screen;
+    public final GameScreen screen;
 
     public GameClient(String hostname, String username) {
         this.screen = new GameScreen(this);
