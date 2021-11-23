@@ -1,5 +1,8 @@
 package io.github.jamalam360.render.menu;
 
+import io.github.jamalam360.game.GameClient;
+import io.github.jamalam360.game.GameHost;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,9 +34,13 @@ public class MainMenuScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(joinButton)) {
-            String hostname = JOptionPane.showInputDialog("Enter Host Name");
+            new GameClient(JOptionPane.showInputDialog("Enter Host Name"), JOptionPane.showInputDialog("Enter User Name"));
         } else if (e.getSource().equals(hostButton)) {
-
+            try {
+                new GameHost(JOptionPane.showInputDialog("Enter User Name"));
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }
