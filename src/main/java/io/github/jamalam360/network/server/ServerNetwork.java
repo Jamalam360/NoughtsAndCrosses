@@ -3,6 +3,7 @@ package io.github.jamalam360.network.server;
 import io.github.jamalam360.game.GameHost;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -24,7 +25,9 @@ public class ServerNetwork {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new ServerInitializer(gameHost, settings));
+                    .childHandler(new ServerInitializer(gameHost, settings))
+                    .option(ChannelOption.SO_BACKLOG, 128)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             channel = b.bind(settings.port()).sync().channel();
             channel.closeFuture().sync();
